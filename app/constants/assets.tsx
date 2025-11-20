@@ -1,0 +1,36 @@
+export const ASSETS = {
+  heroImg:
+    "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2070&auto=format&fit=crop",
+  model1:
+    "https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1888&auto=format&fit=crop",
+  model2:
+    "https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?q=80&w=2070&auto=format&fit=crop",
+  model3:
+    "https://images.unsplash.com/photo-1550614000-4b9519e02c2c?q=80&w=2000&auto=format&fit=crop",
+  lookbook1:
+    "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1887&auto=format&fit=crop",
+  lookbook2:
+    "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1886&auto=format&fit=crop",
+  detail:
+    "https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070&auto=format&fit=crop",
+  journal1:
+    "https://images.unsplash.com/photo-1502163140606-888448ae8cfe?q=80&w=2070&auto=format&fit=crop",
+  journal2:
+    "https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=2070&auto=format&fit=crop",
+  atelier1:
+    "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?q=80&w=2449&auto=format&fit=crop",
+  atelier2:
+    "https://images.unsplash.com/photo-1558603668-6570496b66f8?q=80&w=2564&auto=format&fit=crop",
+  runway1:
+    "https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=1966&auto=format&fit=crop",
+  runway2:
+    "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2020&auto=format&fit=crop",
+  runway3:
+    "https://images.unsplash.com/photo-1550614000-4b9519e02c2c?q=80&w=2000&auto=format&fit=crop",
+  cat_ready:
+    "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?q=80&w=1964&auto=format&fit=crop",
+  cat_bags:
+    "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=2069&auto=format&fit=crop",
+  cat_shoes:
+    "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=2080&auto=format&fit=crop",
+};
