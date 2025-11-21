@@ -1,65 +1,141 @@
-import Image from "next/image";
+"use client";
+import { useState } from "react";
+import LuxuryCursor from "./components/luxury-cursor";
+import Preloader from "./components/preloader";
+import SearchModal from "./components/search-modal";
+import CartDrawer from "./components/cart-drawer";
+import { AnimatePresence, motion } from "framer-motion";
+import Navbar from "./components/nav-bar";
+import ViewHome from "./components/views/home";
+import ViewCollections from "./components/views/collections";
+import ViewJournals from "./components/views/journals";
+import ViewAteliers from "./components/views/ateliers";
+import ViewAccount from "./components/views/account";
+import Footer from "./components/sections/footer";
 
 export default function Home() {
+  const [loading, setLoading] = useState(true);
+  const [view, setView] = useState("home"); // 'home', 'collections', 'journal', 'atelier', 'account'
+  const [cartOpen, setCartOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+    <div className="bg-[#050505] min-h-screen text-[#F5F5F0] selection:bg-[#Cfb53b] selection:text-black">
+      <style jsx global>{`
+        @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500&display=swap");
+
+        body {
+          font-family: "Inter", sans-serif;
+          cursor: none; /* Hide default cursor */
+          overflow-x: hidden;
+        }
+        .font-serif {
+          font-family: "Playfair Display", serif;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+          width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+          background: #050505;
+        }
+        ::-webkit-scrollbar-thumb {
+          background: #333;
+          border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+          background: #cfb53b;
+        }
+
+        @media (max-width: 768px) {
+          body {
+            cursor: auto;
+          }
+        }
+      `}</style>
+
+      <LuxuryCursor />
+      <Preloader setLoading={setLoading} />
+
+      <SearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
+      <CartDrawer isOpen={cartOpen} onClose={() => setCartOpen(false)} />
+
+      {!loading && (
+        <motion.main
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+          <Navbar
+            setView={setView}
+            setCartOpen={setCartOpen}
+            setSearchOpen={setSearchOpen}
+            view={view}
+          />
+
+          <AnimatePresence mode="wait">
+            {view === "home" && (
+              <motion.div
+                key="home"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <ViewHome setView={setView} />
+              </motion.div>
+            )}
+            {view === "collections" && (
+              <motion.div
+                key="collections"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <ViewCollections />
+              </motion.div>
+            )}
+            {view === "journal" && (
+              <motion.div
+                key="journal"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <ViewJournals />
+              </motion.div>
+            )}
+            {view === "atelier" && (
+              <motion.div
+                key="atelier"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <ViewAteliers />
+              </motion.div>
+            )}
+            {view === "account" && (
+              <motion.div
+                key="account"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <ViewAccount />
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Footer stays on all pages */}
+          <Footer />
+        </motion.main>
+      )}
     </div>
   );
 }

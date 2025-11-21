@@ -52,7 +52,7 @@ const ViewHome = ({ setView }: { setView: (view: string) => void }) => (
                   duration: 1.2,
                   ease: [0.76, 0, 0.24, 1],
                 }}
-                className="text-[13vw] leading-[0.8] font-serif italic tracking-tighter pr-4"
+                className="text-[13vw] leading-[0.8] pb-2 font-serif italic tracking-tighter pr-4"
               >
                 Ethereal
               </motion.h1>
@@ -66,7 +66,7 @@ const ViewHome = ({ setView }: { setView: (view: string) => void }) => (
                   duration: 1.2,
                   ease: [0.76, 0, 0.24, 1],
                 }}
-                className="text-[13vw] leading-[0.8] font-serif tracking-tighter text-right"
+                className="text-[13vw] leading-[0.8] pb-14 font-serif tracking-tighter text-right"
               >
                 Elegance
               </motion.h1>
@@ -165,7 +165,7 @@ const ViewHome = ({ setView }: { setView: (view: string) => void }) => (
         <div
           className="absolute inset-0 w-full h-full bg-fixed bg-cover bg-center brightness-75"
           style={{ backgroundImage: `url(${ASSETS.detail})` }}
-        ></div>
+        />
         <div className="absolute inset-0 flex flex-col items-center justify-center z-10 text-[#F5F5F0]">
           <Transition>
             <h2 className="text-[10vw] font-serif italic leading-none mix-blend-overlay">

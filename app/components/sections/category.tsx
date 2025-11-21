@@ -1,3 +1,4 @@
+"use client";
 import { ASSETS } from "@/app/constants/assets";
 import { AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
