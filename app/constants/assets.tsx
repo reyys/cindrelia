@@ -6,7 +6,7 @@ export const ASSETS = {
   model2:
     "https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?q=80&w=2070&auto=format&fit=crop",
   model3:
-    "https://images.unsplash.com/photo-1550614000-4b9519e02c2c?q=80&w=2000&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?q=80&w=2070&auto=format&fit=crop",
   lookbook1:
     "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1887&auto=format&fit=crop",
   lookbook2:
@@ -26,7 +26,7 @@ export const ASSETS = {
   runway2:
     "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2020&auto=format&fit=crop",
   runway3:
-    "https://images.unsplash.com/photo-1550614000-4b9519e02c2c?q=80&w=2000&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2020&auto=format&fit=crop",
   cat_ready:
     "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?q=80&w=1964&auto=format&fit=crop",
   cat_bags:
