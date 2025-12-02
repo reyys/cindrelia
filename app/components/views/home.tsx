@@ -6,7 +6,16 @@ import { ArrowRight } from "lucide-react";
 import SectionRunway from "../sections/runway";
 import Transition from "../transition";
 import SectionCategory from "../sections/category";
-const ViewHome = ({ setView }: { setView: (view: string) => void }) => (
+import { PRODUCTS_DATA } from "./detail";
+
+const ViewHome = ({
+  setView,
+  handleProductClick,
+}: {
+  setView: (view: string) => void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  handleProductClick: (product: any) => void;
+}) => (
   <>
     {/* Hero Section */}
     <div className="relative h-screen w-full overflow-hidden bg-[#050505]">
@@ -52,7 +61,7 @@ const ViewHome = ({ setView }: { setView: (view: string) => void }) => (
                   duration: 1.2,
                   ease: [0.76, 0, 0.24, 1],
                 }}
-                className="text-[13vw] leading-[0.8] pb-2 font-serif italic tracking-tighter pr-4"
+                className="text-[13vw] leading-[0.8] font-serif italic tracking-tighter pr-4"
               >
                 Ethereal
               </motion.h1>
@@ -66,7 +75,7 @@ const ViewHome = ({ setView }: { setView: (view: string) => void }) => (
                   duration: 1.2,
                   ease: [0.76, 0, 0.24, 1],
                 }}
-                className="text-[13vw] leading-[0.8] pb-14 font-serif tracking-tighter text-right"
+                className="text-[13vw] leading-[0.8] font-serif tracking-tighter text-right"
               >
                 Elegance
               </motion.h1>
@@ -122,13 +131,12 @@ const ViewHome = ({ setView }: { setView: (view: string) => void }) => (
       </Transition>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4">
-        {[
-          { img: ASSETS.model1, title: "Velvet Evening", price: "$290" },
-          { img: ASSETS.model2, title: "Silk & Stone", price: "$450" },
-          { img: ASSETS.model3, title: "Noir Blazer", price: "$320" },
-        ].map((item, i) => (
+        {PRODUCTS_DATA.slice(0, 3).map((item, i) => (
           <Transition key={i} className="group cursor-pointer interactive">
-            <div className="relative overflow-hidden mb-6 aspect-[3/4]">
+            <div
+              onClick={() => handleProductClick(item)}
+              className="relative overflow-hidden mb-6 aspect-[3/4]"
+            >
               <motion.img
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.6 }}
@@ -148,7 +156,7 @@ const ViewHome = ({ setView }: { setView: (view: string) => void }) => (
                 {item.title}
               </h3>
               <span className="text-sm font-mono text-gray-400">
-                {item.price}
+                ${item.price}
               </span>
             </div>
           </Transition>
@@ -156,7 +164,6 @@ const ViewHome = ({ setView }: { setView: (view: string) => void }) => (
       </div>
     </section>
 
-    {/* NEW: Runway Section */}
     <SectionRunway />
 
     {/* Parallax Editorial */}
@@ -165,7 +172,7 @@ const ViewHome = ({ setView }: { setView: (view: string) => void }) => (
         <div
           className="absolute inset-0 w-full h-full bg-fixed bg-cover bg-center brightness-75"
           style={{ backgroundImage: `url(${ASSETS.detail})` }}
-        />
+        ></div>
         <div className="absolute inset-0 flex flex-col items-center justify-center z-10 text-[#F5F5F0]">
           <Transition>
             <h2 className="text-[10vw] font-serif italic leading-none mix-blend-overlay">

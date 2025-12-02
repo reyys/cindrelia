@@ -1,33 +1,13 @@
-import { ASSETS } from "@/app/constants/assets";
 import { motion } from "framer-motion";
 import Transition from "../transition";
 import { Plus } from "lucide-react";
+import { PRODUCTS_DATA } from "./detail";
 
-const ViewCollections = () => {
-  const products = [
-    { img: ASSETS.model1, title: "Velvet Evening", price: "$290", tag: "New" },
-    {
-      img: ASSETS.model2,
-      title: "Silk & Stone",
-      price: "$450",
-      tag: "Best Seller",
-    },
-    { img: ASSETS.model3, title: "Noir Blazer", price: "$320", tag: "" },
-    {
-      img: ASSETS.lookbook1,
-      title: "Ivory Draped Dress",
-      price: "$550",
-      tag: "Exclusive",
-    },
-    { img: ASSETS.lookbook2, title: "Obsidian Coat", price: "$890", tag: "" },
-    {
-      img: ASSETS.detail,
-      title: "Texture Knit",
-      price: "$210",
-      tag: "Limited",
-    },
-  ];
-
+const ViewCollections = ({
+  onProductClick,
+}: {
+  onProductClick: (product: (typeof PRODUCTS_DATA)[number]) => void;
+}) => {
   return (
     <div className="min-h-screen bg-[#050505] pt-32 px-6 md:px-12 pb-20">
       <motion.div
@@ -54,13 +34,16 @@ const ViewCollections = () => {
       </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
-        {products.map((item, i) => (
+        {PRODUCTS_DATA.map((item, i) => (
           <Transition
             key={i}
             delay={i * 0.1}
             className="group cursor-pointer interactive"
           >
-            <div className="relative overflow-hidden mb-4 aspect-[3/4]">
+            <div
+              onClick={() => onProductClick(item)}
+              className="relative overflow-hidden mb-4 aspect-[3/4]"
+            >
               {item.tag && (
                 <span className="absolute top-4 left-4 bg-[#F5F5F0] text-black text-[10px] uppercase tracking-widest px-2 py-1 z-10">
                   {item.tag}
@@ -89,7 +72,7 @@ const ViewCollections = () => {
                 </p>
               </div>
               <span className="text-sm font-mono text-gray-300">
-                {item.price}
+                ${item.price}
               </span>
             </div>
           </Transition>
