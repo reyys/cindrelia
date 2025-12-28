@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 const Preloader = ({
   setLoading,
 }: {
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  setLoading: (isLoading: boolean) => void;
 }) => {
   return (
     <motion.div

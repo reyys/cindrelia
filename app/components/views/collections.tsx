@@ -1,13 +1,14 @@
+"use client";
 import { motion } from "framer-motion";
 import Transition from "../transition";
 import { Plus } from "lucide-react";
-import { PRODUCTS_DATA } from "./detail";
+import { PRODUCTS_DATA } from "../constants/products";
+import usePage from "@/app/states/page";
+import { useState } from "react";
 
-const ViewCollections = ({
-  onProductClick,
-}: {
-  onProductClick: (product: (typeof PRODUCTS_DATA)[number]) => void;
-}) => {
+export default function ViewCollections() {
+  const { addToCart, setCartOpen } = usePage();
+  const [category, setCategory] = useState<string>("All");
   return (
     <div className="min-h-screen bg-[#050505] pt-32 px-6 md:px-12 pb-20">
       <motion.div
@@ -21,13 +22,22 @@ const ViewCollections = ({
         </h1>
         <div className="flex gap-8 text-sm text-gray-400 uppercase tracking-widest mt-8 md:mt-0">
           <span className="text-[#Cfb53b] cursor-pointer">All</span>
-          <span className="hover:text-white cursor-pointer interactive">
+          <span
+            onClick={() => setCategory("Coats")}
+            className="hover:text-white cursor-pointer interactive"
+          >
             Coats
           </span>
-          <span className="hover:text-white cursor-pointer interactive">
+          <span
+            onClick={() => setCategory("Dresses")}
+            className="hover:text-white cursor-pointer interactive"
+          >
             Dresses
           </span>
-          <span className="hover:text-white cursor-pointer interactive">
+          <span
+            onClick={() => setCategory("Accessories")}
+            className="hover:text-white cursor-pointer interactive"
+          >
             Accessories
           </span>
         </div>
@@ -41,7 +51,10 @@ const ViewCollections = ({
             className="group cursor-pointer interactive"
           >
             <div
-              onClick={() => onProductClick(item)}
+              onClick={() => {
+                addToCart(item);
+                setCartOpen(true);
+              }}
               className="relative overflow-hidden mb-4 aspect-[3/4]"
             >
               {item.tag && (
@@ -80,6 +93,4 @@ const ViewCollections = ({
       </div>
     </div>
   );
-};
-
-export default ViewCollections;
+}

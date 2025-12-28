@@ -1,3 +1,4 @@
+"use client";
 import { ASSETS } from "@/app/constants/assets";
 import { motion } from "framer-motion";
 

@@ -4,8 +4,9 @@ import { AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
-const SectionCategory = ({ setView }: { setView: (view: string) => void }) => {
+const SectionCategory = () => {
   const categories = [
     { id: 1, name: "Ready to Wear", img: ASSETS.cat_ready },
     { id: 2, name: "Leather Goods", img: ASSETS.cat_bags },
@@ -25,7 +26,6 @@ const SectionCategory = ({ setView }: { setView: (view: string) => void }) => {
             <div
               key={cat.id}
               onMouseEnter={() => setActiveCat(cat)}
-              onClick={() => setView("collections")}
               className="group cursor-pointer interactive"
             >
               <h2
@@ -39,12 +39,11 @@ const SectionCategory = ({ setView }: { setView: (view: string) => void }) => {
               </h2>
             </div>
           ))}
-          <button
-            onClick={() => setView("collections")}
-            className="flex items-center gap-2 mt-8 uppercase text-xs font-bold tracking-widest hover:gap-4 transition-all interactive w-max"
-          >
-            View All Categories <ArrowRight className="w-4 h-4" />
-          </button>
+          <Link href="/collections">
+            <button className="flex items-center gap-2 mt-8 uppercase text-xs font-bold tracking-widest hover:gap-4 transition-all interactive w-max">
+              View All Categories <ArrowRight className="w-4 h-4" />
+            </button>
+          </Link>
         </div>
         <div className="relative h-full min-h-[400px] overflow-hidden">
           <AnimatePresence mode="wait">

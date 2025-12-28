@@ -1,21 +1,16 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ShoppingBag, X } from "lucide-react";
+import usePage from "../states/page";
 
 // 3. CART DRAWER
 const CartDrawer = ({
   isOpen,
   onClose,
-  cart = [],
 }: {
   isOpen: boolean;
   onClose: () => void;
-  cart: {
-    img: string;
-    title: string;
-    size: string;
-    price: number;
-  }[];
 }) => {
+  const { cart } = usePage();
   return (
     <AnimatePresence>
       {isOpen && (

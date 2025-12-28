@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ASSETS } from "../../constants/assets";
+import Link from "next/link";
 
 const SectionRunway = () => {
   const runwayItems = [
@@ -25,23 +26,24 @@ const SectionRunway = () => {
         dragConstraints={{ right: 0, left: -1000 }}
       >
         {runwayItems.map((item, i) => (
-          <motion.div
-            key={i}
-            className="min-w-[300px] md:min-w-[400px] h-[500px] md:h-[600px] relative group interactive"
-            whileHover={{ scale: 0.98 }}
-            transition={{ duration: 0.5 }}
-          >
-            <img
-              src={item.img}
-              alt={item.label}
-              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-            />
-            <div className="absolute bottom-6 left-6 bg-black/80 px-4 py-2 backdrop-blur-sm">
-              <span className="text-xs uppercase tracking-widest">
-                {item.label}
-              </span>
-            </div>
-          </motion.div>
+          <Link href="/collections" key={i}>
+            <motion.div
+              className="min-w-[300px] md:min-w-[400px] h-[500px] md:h-[600px] relative group interactive"
+              whileHover={{ scale: 0.98 }}
+              transition={{ duration: 0.5 }}
+            >
+              <img
+                src={item.img}
+                alt={item.label}
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+              />
+              <div className="absolute bottom-6 left-6 bg-black/80 px-4 py-2 backdrop-blur-sm">
+                <span className="text-xs uppercase tracking-widest">
+                  {item.label}
+                </span>
+              </div>
+            </motion.div>
+          </Link>
         ))}
       </motion.div>
     </div>
