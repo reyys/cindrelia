@@ -1,3 +1,4 @@
+"use client";
 import { ASSETS } from "@/app/constants/assets";
 import usePage from "@/app/states/page";
 import { AnimatePresence, motion } from "framer-motion";
